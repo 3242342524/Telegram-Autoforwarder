@@ -10,8 +10,6 @@ load_dotenv()
 api_id = os.getenv("API_ID")
 api_hash = os.getenv("API_HASH")
 phone_number = os.getenv("PHONE_NUMBER")
-source_chat = os.getenv("SOURCE_CHAT")
-destination_chat = os.getenv("DESTINATION_CHAT")
     async def list_chats(self):
         await self.client.connect()
 
