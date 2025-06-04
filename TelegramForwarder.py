@@ -1,15 +1,17 @@
-import time
+import os
 import asyncio
-from telethon.sync import TelegramClient
-from telethon import errors
+from telethon import TelegramClient, events
+from dotenv import load_dotenv
 
-class TelegramForwarder:
-    def __init__(self, api_id, api_hash, phone_number):
-        self.api_id = api_id
-        self.api_hash = api_hash
-        self.phone_number = phone_number
-        self.client = TelegramClient('session_' + phone_number, api_id, api_hash)
+# Load environment variables from a .env file
+load_dotenv()
 
+# Retrieve credentials from environment variables
+api_id = os.getenv("API_ID")
+api_hash = os.getenv("API_HASH")
+phone_number = os.getenv("PHONE_NUMBER")
+source_chat = os.getenv("SOURCE_CHAT")
+destination_chat = os.getenv("DESTINATION_CHAT")
     async def list_chats(self):
         await self.client.connect()
 
